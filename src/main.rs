@@ -1,10 +1,9 @@
 mod task;
 
-use task::Task;
 use task::operations::{self, Operation};
 
 fn main() {
-    let mut tasks: Vec<Task> = Vec::new();
+    let mut tasks = operations::load_tasks().expect("Failed to load tasks");
 
     loop {
         match operations::get_operation() {

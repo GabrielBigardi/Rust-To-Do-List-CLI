@@ -1,16 +1,20 @@
 pub mod operations;
 
+use serde::{Deserialize, Serialize};
+use uuid::Uuid;
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Task {
-    pub id : u32,
+    pub id : String,
     pub name: String,
     pub description: String,
     pub completed: bool,
 }
 
 impl Task {
-    pub fn new(id: u32, name: String, description: String) -> Task {
+    pub fn new(name: String, description: String) -> Task {
         Task {
-            id,
+            id: Uuid::new_v4().to_string(),
             name,
             description,
             completed: false,
@@ -18,7 +22,8 @@ impl Task {
     }
 
     pub fn display(&self) {
-        println!("Task {}: {}", self.id, self.name);
+        println!("ID: {}", self.id);
+        println!("Name: {}", self.name);
         println!("Description: {}", self.description);
         println!("Completed: {}", self.completed);
         println!("");
