@@ -1,4 +1,3 @@
-use crate::task::Task;
 use std::fs::{File, OpenOptions};
 use std::path::Path;
 use std::io::Write;
@@ -6,6 +5,8 @@ use std::io::stdin;
 use std::io::stdout;
 use std::io::Result;
 use uuid::Uuid;
+
+use super::task::Task;
 
 pub enum Operation {
     Create,
